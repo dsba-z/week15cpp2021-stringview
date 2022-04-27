@@ -1,6 +1,5 @@
-# DSBA Introduction to Programming // Workshops 25-28
+# DSBA Introduction to Programming // Workshop 30
 Spring semester 2021/22
 
 
-STL algorithms, exceptions.
-
+Class `std::string_view`
