@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string_view>
 #include <string>
+#include <cstring>
 #include <vector>
 #include <chrono>
 #include <ctime>
@@ -49,6 +50,32 @@ void collectLinesSv(std::string_view text, std::vector<std::string_view>& lineBa
     }
 }
 
+void runStdString2(const char* buffer)
+{
+    std::vector<std::string> lineVector;
+    collectLines(buffer, lineVector);
+    
+    int counter = 0;
+    
+    std::clock_t c_start = std::clock();
+    auto t_start = std::chrono::high_resolution_clock::now();
+    
+    for (const std::string& s: lineVector)
+    {
+        counter++;
+    }
+    
+    
+    std::clock_t c_end = std::clock();
+    auto t_end = std::chrono::high_resolution_clock::now();
+ 
+    std::cout << std::fixed << std::setprecision(2) << "CPU time used: "
+              << 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC << " ms\n"
+              << "Wall clock time passed: "
+              << std::chrono::duration<double, std::milli>(t_end-t_start).count()
+              << " ms\n";
+    
+}
 
 void runStdString(const char* buffer)
 {
@@ -91,6 +118,7 @@ void runStdStringView(const char* buffer)
               << " ms\n";
 }
 
+
 void task0()
 {
     // the size of the book is 160000+ symbols
@@ -132,6 +160,12 @@ void task1()
 
 int main()
 {
+    // #include <cstring>
+    int size = strlen("asdasdasdasd");
+    
+    std::string example("string");
+    int size2 = strlen(example.c_str());
+    
     task0();
 //    task1();
 
