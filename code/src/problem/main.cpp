@@ -91,17 +91,8 @@ void runStdStringView(const char* buffer)
               << " ms\n";
 }
 
-// line is shorter than 50 symbols
-// the first characters is 'A'
-bool isLineGood(/* input */)
+void task0()
 {
-    return true;
-}
-
-
-int main()
-{
-
     // the size of the book is 160000+ symbols
     const char* path = "../../data/alice.txt";
     std::ifstream textFile(path);
@@ -112,6 +103,37 @@ int main()
     runStdString(buffer);
     
     runStdStringView(buffer);
+
+}
+
+
+// line is shorter than 50 symbols
+// the first characters is 'A'
+bool isLineGood(/* input */)
+{
+    return true;
+}
+
+
+void task1()
+{
+    if (isLineGood(/* "A good line" */))
+    {
+        std::cout << "first line is good";
+    }
     
+    std::string secondLine("Not a good line");
+    if (!isLineGood(/* secondLine */))
+    {
+        std::cout << "second line is not good";
+    }
+    
+}
+
+int main()
+{
+    task0();
+//    task1();
+
     return 0;
 }
