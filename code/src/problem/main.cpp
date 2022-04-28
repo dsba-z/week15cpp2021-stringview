@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string_view>
 #include <string>
+#include <cstring>
 #include <vector>
 #include <chrono>
 #include <ctime>
@@ -47,6 +48,27 @@ void collectLinesSv(std::string_view text, std::vector<std::string_view>& lineBa
             lineLength += 1;
         }
     }
+}
+
+void checkLines(const char* buffer)
+{
+    std::vector<std::string> lineVector;
+    collectLines(buffer, lineVector);
+    
+    std::clock_t c_start = std::clock();
+    auto t_start = std::chrono::high_resolution_clock::now();
+    
+    // do things here
+    
+    std::clock_t c_end = std::clock();
+    auto t_end = std::chrono::high_resolution_clock::now();
+ 
+    std::cout << std::fixed << std::setprecision(2) << "CPU time used: "
+              << 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC << " ms\n"
+              << "Wall clock time passed: "
+              << std::chrono::duration<double, std::milli>(t_end-t_start).count()
+              << " ms\n";
+    
 }
 
 
@@ -103,6 +125,9 @@ void task0()
     runStdString(buffer);
     
     runStdStringView(buffer);
+    
+    
+    checkLines(buffer);
 
 }
 
@@ -117,13 +142,13 @@ bool isLineGood(/* input */)
 
 void task1()
 {
-    if (isLineGood(/* "A good line" */))
+    if (isLineGood("A good line"))
     {
         std::cout << "first line is good";
     }
     
     std::string secondLine("Not a good line");
-    if (!isLineGood(/* secondLine */))
+    if (!isLineGood(secondLine))
     {
         std::cout << "second line is not good";
     }
@@ -132,6 +157,11 @@ void task1()
 
 int main()
 {
+    std::string example("string");
+    
+    int size = strlen("string string c-style string");
+    int size2 = strlen(example.c_str());
+    
     task0();
 //    task1();
 
