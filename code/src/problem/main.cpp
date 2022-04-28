@@ -19,7 +19,7 @@ void collectLines(const std::string& text, std::vector<std::string>& lineBag)
         {
             lineBag.push_back(text.substr(lineStart, lineLength));
             lineLength = 0;
-            lineStart = i;
+            lineStart = i + 1;
         }
         else
         {
@@ -40,7 +40,7 @@ void collectLinesSv(std::string_view text, std::vector<std::string_view>& lineBa
         {
             lineBag.push_back(text.substr(lineStart, lineLength));
             lineLength = 0;
-            lineStart = i;
+            lineStart = i + 1;
         }
         else
         {
