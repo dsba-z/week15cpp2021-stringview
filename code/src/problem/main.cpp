@@ -91,6 +91,14 @@ void runStdStringView(const char* buffer)
               << " ms\n";
 }
 
+// line is shorter than 50 symbols
+// the first characters is 'A'
+bool isLineGood(/* input */)
+{
+    return true;
+}
+
+
 int main()
 {
 
